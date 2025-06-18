@@ -1,0 +1,11 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhistcnt =9
+let g:netrw_dirhist_9='/Users/yunake/src/docker/src'
+let g:netrw_dirhist_8='/Users/yunake/.vim'
+let g:netrw_dirhist_7='/Users/yunake/.vim/compiler'
+let g:netrw_dirhist_6='/Users/yunake/.vim'
+let g:netrw_dirhist_5='/Users/yunake/src/okrip'
+let g:netrw_dirhist_4='/Users/yunake/.tmux'
+let g:netrw_dirhist_3='/Users/yunake/.config/mpv'
+let g:netrw_dirhist_2='/Users/yunake/src/okrip/magefiles'
+let g:netrw_dirhist_1='/Users/yunake/src/mobdelay_parser/.git'
