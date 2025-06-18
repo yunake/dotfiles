@@ -1,0 +1,35 @@
+export BASH_SILENCE_DEPRECATION_WARNING=1
+
+export HISTIGNORE='&:ls:cd ~:cd ..:[bf]g:exit'
+export HISTCONTROL=ignoredups:erasedups
+export HISTSIZE=100000
+export HISTFILESIZE=100000
+export PROMPT_COMMAND="history -a"
+shopt -s histappend
+
+export PS1="\[\e[92m\]\h\[\e[m\]:\[\e[93m\]\W\[\e[m\] \\$ "
+
+export PATH=$PATH:~/bin:~/.local/bin
+export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
+
+export LANG="en_US.UTF-8"
+export LC_ALL="en_US.UTF-8"
+export EDITOR="vim"
+export VISUAL="vim"
+export PAGER="less" # most?
+
+export RIPGREP_CONFIG_PATH="$HOME/.ripgreprc"
+export NVM_DIR="$HOME/.nvm"
+
+[ -f ~/.bash_tokens ] && source ~/.bash_tokens
+[ -f ~/.bash_alias  ] && source ~/.bash_alias
+[ -f ~/.bash_linux  ] && source ~/.bash_linux
+[ -f ~/.bash_darwin ] && source ~/.bash_darwin
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
+
+if command -v kubectl >/dev/null 2>&1; then
+    source <(kubectl completion bash); fi
+if command -v direnv >/dev/null 2>&1; then
+    eval "$(direnv hook bash)"; fi
+

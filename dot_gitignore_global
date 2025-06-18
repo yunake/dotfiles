@@ -1,0 +1,10 @@
+# vim
+tags
+*~
+*.swp
+*.swo
+.netrwhist
+
+# macos
+.DS_Store
+

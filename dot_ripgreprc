@@ -1,0 +1,4 @@
+--glob
+!tags
+--glob
+!__pycache__

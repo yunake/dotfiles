@@ -1,0 +1,5 @@
+if [ "$(uname -s)" != "Linux" ]; then
+    return
+fi
+
+test -r ~/.dir_colors && eval $(dircolors ~/.dir_colors)

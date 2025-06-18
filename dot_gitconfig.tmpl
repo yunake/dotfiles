@@ -1,0 +1,44 @@
+[user]
+    name = {{ if hasKey . ".git_name" }}{{ .git_name | quote }}{{ else }}"Eugene Yunak"{{ end }}
+    email = {{ if hasKey . "git_email" }}{{ .git_email | quote }}{{ else }}"e.yunak@gmail.com"{{ end }}
+
+[core]
+    editor = vim
+    pager = less -R
+    excludesfile = {{ .chezmoi.homeDir }}/.gitignore_global
+
+[init]
+    defaultbranch = main
+
+[fetch]
+    prune = true
+
+[alias]
+    st = "status --short"
+    branches = "branch -a"
+    tags = "tag -l"
+    co = "checkout"
+    ci = "commit"
+    id = "rev-parse --short HEAD"
+    pm = "!sh -c 'git stash && git pull && git stash pop' -"
+    out = "log --branches --not --remotes"
+    #out = "!sh -c 'git fetch && git log origin/master..' -"
+    in = "!sh -c 'git fetch && git log ..origin/main' -"
+    uncommit = "reset --soft HEAD~1"
+    l = "log --oneline --graph --decorate"
+    lg = "log -p"
+    graph = "!sh -c 'git log --graph --decorate --oneline -n "$1"' -"
+    # list branches ordered by change time
+    br = "!git for-each-ref --format='%(committerdate:short),%(authorname),%(refname:short)' --sort=committerdate refs/heads/ | column -t -s ','"
+    # push to origin preserving local branch name
+    po = "!git push --set-upstream origin \"$(git rev-parse --abbrev-ref HEAD)\""
+    # force push branch after rebase for PR, but check for new changes first
+    pr = "push --force-with-lease"
+
+[icdiff]
+    options = "--highlight --line-numbers"
+[filter "lfs"]
+    smudge = git-lfs smudge -- %f
+   	process = git-lfs filter-process
+   	required = true
+   	clean = git-lfs clean -- %f

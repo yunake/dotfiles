@@ -1,0 +1,29 @@
+if [ "$(uname -s)" != "Darwin" ]; then
+    return
+fi
+
+export PS1="\[\e[92m\]$(scutil --get ComputerName)\[\e[m\]:\[\e[93m\]\W\[\e[m\] \\$ "
+export PATH=$PATH:/opt/homebrew/opt/mysql-client/bin
+
+export HOMEBREW_NO_ENV_HINTS=1
+eval "$(/opt/homebrew/bin/brew shellenv)"
+[[ -r "/opt/homebrew/etc/profile.d/bash_completion.sh" ]] && . "/opt/homebrew/etc/profile.d/bash_completion.sh"
+
+[ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
+[ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
+
+# rancher desktop
+#export PATH=~/.rd/bin:$PATH
+
+test -r ~/.dir_colors && eval $(gdircolors ~/.dir_colors)
+
+alias ls='/opt/homebrew/bin/gls --color=auto'
+alias lls='/opt/homebrew/bin/gls -lAGh1vX --group-directories-first --color=always | L'
+alias xclip='pbcopy'
+alias xdg-open='open'
+alias htop_mac='macmon'
+alias powertop='sudo powermetrics --samplers=tasks --order=composite --show-process-energy --show-usage-summary --show-initial-usage ' # see also: `power_report.sh` and what it calls
+#
+# TODO: use PROMPT_COMMAND or change PS1 to automatically call notifyDone for long-running commands. save time via HISTTIMEFORMAT?
+alias notifyDone='terminal-notifier -title "Terminal" -message "$(echo -e Complete!\\n$(lastCommand)\\nExit status: $?)" -activate com.apple.Terminal; tput bel; echo "Its done" | say -v Zarvox'
+# FIXME: `activate` should be current Terminal or iTerm
