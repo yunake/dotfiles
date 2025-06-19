@@ -1,0 +1,13 @@
+Host *
+    {{- if eq .chezmoi.os "darwin" }}
+    IdentityAgent "~/Library/Group Containers/group.strongbox.mac.mcguill/agent.sock"
+    {{- end }}
+    TCPKeepAlive yes
+    ServerAliveInterval 30
+    ServerAliveCountMax 6
+    # for OLD hosts, e.g. Owlbear
+    #PubkeyAcceptedAlgorithms +ssh-rsa
+    #HostkeyAlgorithms +ssh-rsa
+
+Include hosts
+
