@@ -16,7 +16,7 @@ shopt -s checkwinsize
 export PS1="\[\e[92m\]\h\[\e[m\]:\[\e[93m\]\W\[\e[m\] \\$ "
 
 export PATH=$PATH:~/bin:~/.local/bin
-export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
+export PATH="$PATH:${KREW_ROOT:-$HOME/.krew}/bin"
 
 export LANG="en_US.UTF-8"
 export LC_ALL="en_US.UTF-8"
