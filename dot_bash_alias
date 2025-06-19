@@ -17,7 +17,7 @@ alias chezmoi-pull='chezmoi git pull -- --autostash --rebase && chezmoi diff' # 
 function chezmoi-new-ubuntu {
     echo curl -sSL https://raw.githubusercontent.com/junegunn/fzf/refs/heads/master/install \| bash
     echo sh -c \"\$\(curl -fsLS get.chezmoi.io\)\" -- init --apply yunake
-    echo 'sudo apt install -y bpytop tmux fzf ripgrep exuberant-ctags'
+    echo 'sudo apt install -y bpytop tmux ripgrep exuberant-ctags'
 }
 function chezmoi-new-ubuntu-broken-escaping {
     ssh "$@" bash -c 'sh -c '"$(curl -fsLS get.chezmoi.io)" -- init --apply https://github.com/yunake/dotfiles.git''
