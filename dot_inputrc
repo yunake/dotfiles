@@ -1,1 +1,11 @@
-set completion-ignore-case On
+set editing-mode vi
+$if mode=vi
+    set keymap vi-command
+    Control-u: kill-whole-line
+    Control-w: backward-kill-word
+    set keymap vi-insert
+    Control-w: backward-kill-word
+$endif
+
+set completion-ignore-case on
+set bind-tty-special-chars off
