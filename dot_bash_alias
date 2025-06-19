@@ -1,3 +1,4 @@
+[ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
 alias L='less -R --use-color' # most?
 alias G='grep --color=always -i'
 alias ls='ls --color=auto'
@@ -13,7 +14,10 @@ if command -v bpytop >/dev/null 2>&1; then
 # chezmoi
 alias chezmoi-pull='chezmoi git pull -- --autostash --rebase && chezmoi diff' # TODO: add prompt to autoapply
 function chezmoi-new-ubuntu {
-    ssh "$@" bash -c 'apt install chezmoi && chezmoi init --apply https://github.com/yunake/dotfiles.git'
+    echo sh -c \"\$\(curl -fsLS get.chezmoi.io\)\" -- init --apply yunake
+}
+function chezmoi-new-ubuntu-broken-escaping {
+    ssh "$@" bash -c 'sh -c '"$(curl -fsLS get.chezmoi.io)" -- init --apply https://github.com/yunake/dotfiles.git''
 }
 
 # TODO: modify it so it opens PDFs, or white custom script like ~/bin/rfv
