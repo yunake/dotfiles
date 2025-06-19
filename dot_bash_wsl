@@ -1,0 +1,5 @@
+if uname -r | grep -iqv microsoft; then
+    return
+fi
+
+eval "$(/usr/sbin/wsl2-ssh-agent)"

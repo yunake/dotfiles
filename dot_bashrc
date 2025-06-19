@@ -1,4 +1,9 @@
+# If not running interactively, don't do anything
+[[ $- != *i* ]] && return
+
 export BASH_SILENCE_DEPRECATION_WARNING=1
+
+set -o vi
 
 export HISTIGNORE='&:ls:cd ~:cd ..:[bf]g:exit'
 export HISTCONTROL=ignoredups:erasedups
@@ -25,6 +30,7 @@ export NVM_DIR="$HOME/.nvm"
 [ -f ~/.bash_alias  ] && source ~/.bash_alias
 [ -f ~/.bash_linux  ] && source ~/.bash_linux
 [ -f ~/.bash_darwin ] && source ~/.bash_darwin
+[ -f ~/.bash_wsl    ] && source ~/.bash_wsl
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
