@@ -8,7 +8,9 @@ sh -c "$(curl -fsLS get.chezmoi.io)" -- init --apply yunake
 
 On Ubuntu
 ```shell
-sudo apt install -y bpytop tmux ripgrep exuberant-ctags fzf
+sudo apt install -y bpytop tmux ripgrep exuberant-ctags fzf bat rage jq yq curlie httpie sd fd procs dust duf bandwidth doggo
+dpkg -i https://github.com/dandavison/delta/releases/download/0.18.2/git-delta_0.18.2_amd64.deb
+dpkg -i https://github.com/ms-jpq/sad/releases/latest/download/x86_64-unknown-linux-gnu.deb
 ```
 
 On Ubuntu 22.04 or other old Linux:
