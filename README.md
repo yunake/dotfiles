@@ -44,8 +44,11 @@ git push
 - Darwin: audit and add other configs
 - WSL: vim fix copy-paste to system clipboard
 - WSL: tmux hotkeys: v to enter vim mode, v to select, y to copy
+- WSL: tmux copy-paste to system clipboard works in Windows Terminal but not in Alacritty
 - WSL: alacritty add config to chezmoi
-- WSL: alacritty fix colors. visual selection in vim in tmux
+- WSL: alacritty & Windows Terminal fix colors. visual selection in vim
+- WSL: Windows Terminal settings & colors
+- WSL: autohotkey scripts
 - Linux: dive into `core` home archive
 - OpenBSD: install & configure ksh, doas, wm
 - Ubuntu 22.04: fzf ctrl-r in shell crashes (only if system fzf is installed?)
