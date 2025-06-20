@@ -40,6 +40,8 @@ git push
 
 ## TODO
 - For `chezmoi-pull`, add prompt to apply the changes
+- Darwin: add terminal colors configs
+- Darwin: audit and add other configs
 - WSL: vim fix copy-paste to system clipboard
 - WSL: tmux hotkeys: v to enter vim mode, v to select, y to copy
 - WSL: alacritty add config to chezmoi
