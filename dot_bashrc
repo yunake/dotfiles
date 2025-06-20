@@ -22,8 +22,9 @@ export LANG="en_US.UTF-8"
 export LC_ALL="en_US.UTF-8"
 export EDITOR="vim"
 export VISUAL="vim"
-export PAGER="less" # most?
+export PAGER="less -R" # most?
 export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
+export GIT_PAGER='delta -s'
 
 export RIPGREP_CONFIG_PATH="$HOME/.ripgreprc"
 export NVM_DIR="$HOME/.nvm"

@@ -4,39 +4,91 @@
 
 [core]
     editor = vim
-    pager = less -R
+    pager = delta
     excludesfile = {{ .chezmoi.homeDir }}/.gitignore_global
+
+{{- if eq .chezmoi.os "darwin" }}
+    # Make `git rebase` safer on OS X
+    # More info: <http://www.git-tower.com/blog/make-git-rebase-safe-on-osx/>
+    trustctime = false
+{{- end }}
 
 [init]
     defaultbranch = main
 
+[pull]
+    # avoid accidentally creating a merge commit when you run git pull on a branch where the upstream branch has diverged
+    rebase = true
+
 [fetch]
     prune = true
+    pruneTags = true
+    all = true
+
+[branch]
+    sort = -committerdate
+
+[column]
+    ui = auto
+
+[color]
+    ui = true
 
 [alias]
-    st = "status --short"
-    branches = "branch -a"
-    tags = "tag -l"
+    aliases = "!git config -l | grep alias | cut -c 7- | bat -pl INI"
+    # Switch to a branch, creating it if necessary.
+    go = "!f() { git checkout -b \"$1\" 2> /dev/null || git checkout \"$1\"; }; f"
+    st = "status --short --branch"
     co = "checkout"
     ci = "commit"
+    amend = "commit --amend --no-edit"
+    reb = "!r() { git rebase -i HEAD~${1:-2}; }; r"
+    sync = "!git pull origin $(git mainbranch) --rebase" # Rebase on remote main
+    fullgc = "gc --aggressive --prune=1day"
+    filelog = "log -u" # All the commits related to a file
+    discard = "checkout --"
+    uncommit = "reset --soft HEAD~1"
+    unstage = "reset HEAD --"
+    unadd = "reset HEAD --"
+    l = "log --oneline --graph --decorate"
+    lg = "log -p"
+    ls = "log --color --pretty=oneline -n 20 --graph --abbrev-commit"
+    ll = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --numstat -n 10
+    lnc = log --pretty=format:"%h\\ %s\\ [%cn]" # No colors.  Good for pipes
+    graph = "!sh -c 'git log --graph --decorate --oneline -n "$1"' -"
+    # list branches ordered by change time
+    br = "!git for-each-ref --format='%(committerdate:short),%(authorname),%(refname:short)' --sort=committerdate refs/heads/ | column -t -s ','"
+    mainbranch = "!git remote show origin | sed -n '/HEAD branch/s/.*: //p'"
     id = "rev-parse --short HEAD"
     pm = "!sh -c 'git stash && git pull && git stash pop' -"
     out = "log --branches --not --remotes"
     #out = "!sh -c 'git fetch && git log origin/master..' -"
     in = "!sh -c 'git fetch && git log ..origin/main' -"
-    uncommit = "reset --soft HEAD~1"
-    l = "log --oneline --graph --decorate"
-    lg = "log -p"
-    graph = "!sh -c 'git log --graph --decorate --oneline -n "$1"' -"
-    # list branches ordered by change time
-    br = "!git for-each-ref --format='%(committerdate:short),%(authorname),%(refname:short)' --sort=committerdate refs/heads/ | column -t -s ','"
     # push to origin preserving local branch name
     po = "!git push --set-upstream origin \"$(git rev-parse --abbrev-ref HEAD)\""
     # force push branch after rebase for PR, but check for new changes first
-    pr = "push --force-with-lease"
+    pr = "push --force-with-lease --force-if-includes"
+    subup = "submodule update --init --recursive"
+    branches = "branch -a"
+    remotes = "remote -v"
+    stashes = "stash list"
+    tags = "tag -l"
 
+[merge]
+    conflictstyle = zdiff3
+[diff]
+    colorMoved = default
+[interactive]
+    diffFilter = delta --color-only
+[delta]
+    navigate = true
+    line-numbers = true
+    side-by-side = true
+    zero-style = dim syntax
+    file-decoration-style = none
 [icdiff]
     options = "--highlight --line-numbers"
+
 [filter "lfs"]
     smudge = git-lfs smudge -- %f
    	process = git-lfs filter-process

@@ -1,3 +1,4 @@
+# -*- ft: bash -*-
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
 [ -x ~/bin/fzf ] && alias fzf='~/bin/fzf'
 alias L='less -R --use-color' # most?
@@ -33,6 +34,10 @@ function vimd {
     rg --files --sortr=modified -0 | xargs -0o vim
 }
 
+function rgd {
+    rg --json -C 2 "$@" | delta
+}
+
 # preserves last occurance
 function dedup {
    tac "$@" | awk '! x[$0]++' | tac
@@ -40,6 +45,10 @@ function dedup {
 # remove "column", leaves IFS behind
 function rmcol {
     awk "!(\$$1=\"\")"
+}
+
+function taillog {
+    tail -f "$@" | bat --paging=never -l log
 }
 
 
