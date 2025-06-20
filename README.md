@@ -18,14 +18,14 @@ curl -sSL https://raw.githubusercontent.com/junegunn/fzf/refs/heads/master/insta
 
 ## Use
 
-Pull new changes:
+Pull new changes from remote:
 ```shell
 alias chezmoi-pull='chezmoi git pull -- --autostash --rebase && chezmoi diff'
 ```
 
-Apply changes with `chezmoi apply`.
+Check and apply changes from local repo to your $HOME with `chezmoi diff` and `chezmoi apply`.
 
-Bring in new changes and commit:
+Bring in new changes from $HOME to local repo and commit:
 ```shell
 chezmoi add ~/.my_config
 chezmoi cd
@@ -34,16 +34,21 @@ git ci -am 'great config'
 git push
 ```
 
-[User guide](https://www.chezmoi.io/user-guide/command-overview/)
-[Reference](https://www.chezmoi.io/reference/)
+1. [User guide](https://www.chezmoi.io/user-guide/command-overview/)
+2. [Reference](https://www.chezmoi.io/reference/)
+3. [Examples](https://www.chezmoi.io/links/dotfile-repos/)
 
 ## TODO
 - For `chezmoi-pull`, add prompt to apply the changes
 - WSL: vim fix copy-paste to system clipboard
 - WSL: tmux hotkeys: v to enter vim mode, v to select, y to copy
 - WSL: alacritty add config to chezmoi
-- WSL: fix alacritty colors. visual selection in vim in tmux
-- Linux: dive into core home archive
+- WSL: alacritty fix colors. visual selection in vim in tmux
+- Linux: dive into `core` home archive
 - OpenBSD: install & configure ksh, doas, wm
 - Ubuntu 22.04: fzf ctrl-r in shell crashes (only if system fzf is installed?)
-
+- Tools: structured installs across various platforms
+- Tools: add more tools: jq, yq, mlr, fd, direnv
+- Tools: ssh compatible crossplatform notify (`.bash_darwin` -> `notifyDone`, `.bash_linux` -> `alert`)
+- Browsers: one config for vim keys configs in Zen, Safari, Edge
+- Security: implement encrypted tokens and certificates
