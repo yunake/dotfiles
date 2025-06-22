@@ -65,5 +65,6 @@ git push
 - Fonts: nerd fonts, unify mono fonts across systems
 - nvim for markdown https://youtu.be/TrbZlA4UIFU
 - yazi file manager
+- tmux status line time & kb layout, battery on wsl
 - Keyboard: design layout [./keyboard]
 - Keyboard: kanata config for laptop keyboard, autodetect external keyboard
