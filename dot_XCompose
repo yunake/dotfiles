@@ -1,0 +1,53 @@
+# This file defines custom Compose sequence for Unicode characters 
+
+# Import default rules from the system Compose file:
+include "/usr/share/X11/locale/en_US.UTF-8/Compose"
+
+<Multi_key> <k> <z> : "☭" U262D # «коси и забивай»
+
+<Multi_key> <equal> <equal>        : "•"   enfilledcircbullet # BULLET
+
+<Multi_key> <equal> <h>            : "₴"   U20b4 # HRYVNIA SIGN
+<Multi_key> <equal> <H>            : "₴"   U20b4 # HRYVNIA SIGN
+<Multi_key> <h> <equal>            : "₴"   U20b4 # HRYVNIA SIGN
+<Multi_key> <H> <equal>            : "₴"   U20b4 # HRYVNIA SIGN
+<Multi_key> <equal> <Cyrillic_ghe> : "₴"   U20b4 # HRYVNIA SIGN
+<Multi_key> <equal> <Cyrillic_GHE> : "₴"   U20b4 # HRYVNIA SIGN
+<Multi_key> <Cyrillic_ghe> <equal> : "₴"   U20b4 # HRYVNIA SIGN
+<Multi_key> <Cyrillic_GHE> <equal> : "₴"   U20b4 # HRYVNIA SIGN
+<Multi_key> <P> <equal>            : "£"   sterling # POUND SIGN
+<Multi_key> <p> <equal>            : "£"   sterling # POUND SIGN
+<Multi_key> <equal> <P>            : "£"   sterling # POUND SIGN
+<Multi_key> <equal> <p>            : "£"   sterling # POUND SIGN
+
+# č Ď ě ň ř š Ť ů ž for the Czech language
+# <c> <c> is č
+<Multi_key> <C> <C>                : "Č"   U010C # LATIN CAPITAL LETTER C WITH CARON
+<Multi_key> <d> <d>                : "ď"   U010F # LATIN SMALL LETTER D WITH CARON
+<Multi_key> <D> <D>                : "Ď"   U010E # LATIN CAPITAL LETTER D WITH CARON
+<Multi_key> <e> <e>                : "ĕ"   U0115 # LATIN SMALL LETTER E WITH BREVE
+<Multi_key> <E> <E>                : "Ĕ"   U0114 # LATIN CAPITAL LETTER E WITH BREVE
+
+# Additional cyrillic
+<Multi_key> <Cyrillic_I>           : "І"
+<Multi_key> <Cyrillic_i>           : "і"
+<Multi_key> <Cyrillic_GHE>         : "Ґ"
+<Multi_key> <Cyrillic_ghe>         : "ґ"
+<Multi_key> <Cyrillic_E>           : "Є"
+<Multi_key> <Cyrillic_e>           : "є"
+<Multi_key> <Cyrillic_SHORTI>      : "Ї"
+<Multi_key> <Cyrillic_shorti>      : "ї"
+<Multi_key> <Cyrillic_HARDSIGN>    : "Ѣ"
+<Multi_key> <Cyrillic_hardsign>    : "ѣ"
+
+<Multi_key> <equal> <asciitilde>   : "≈" U2248 # ALMOST EQUAL TO
+<Multi_key> <asciitilde> <equal>   : "≈" U2248 # ALMOST EQUAL TO
+
+
+# Missing keys in Russian layout
+<Multi_key> <2> <2>                : "@"
+<Multi_key> <3>                    : "#" numbersign # NUMBER SIGN
+<Multi_key> <4>                    : "$" dollar # DOLLAR SIGN
+
+# smileys
+# ¯\_(ツ)_/¯

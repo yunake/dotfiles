@@ -1,0 +1,88 @@
+#ThinkVantage
+"synclient TouchpadOff=$(synclient -l | grep -c 'TouchpadOff.*=.*0')"
+    m:0x0 + c:156
+    XF86Launch1
+
+#lock
+"xscreensaver-command -lock"
+    m:0x0 + c:160
+    XF86ScreenSaver
+
+#toggle play
+"players-ctl.sh play-pause"
+    m:0x0 + c:172
+    XF86AudioPlay
+
+#toggle play
+"players-ctl.sh play-pause"
+    m:0x0 + c:209
+    XF86AudioPause
+
+#play next
+"players-ctl.sh next"
+    m:0x0 + c:171
+    XF86AudioNext
+
+#play prev
+"players-ctl.sh previous"
+    m:0x0 + c:173
+    XF86AudioPrev
+
+#webcam
+# "Command"
+#     m:0x0 + c:220
+#     XF86WebCam
+
+#change display
+
+# laptop
+"xrandrx next"
+    m:0x0 + c:235
+    XF86Display
+"xrandrx laptop"
+    Shift + XF86Display
+"pulse-next-output"
+    Control + XF86Display
+
+# external wireless thinkpad keyboard
+"xrandrx next"
+    m:0x0 + c:148
+    XF86Calculator
+"xrandrx laptop"
+    Shift + XF86Calculator
+"pulse-next-output"
+    Control + XF86Calculator
+
+# fn + middle on right big finger cluster on ergodox
+"xrandrx next"
+    XF86TouchpadOff
+"xrandrx laptop"
+    Shift + XF86TouchpadOff
+"pulse-next-output"
+    Control + XF86TouchpadOff
+
+
+#take screen grab. mute mic not really usable with pa atm
+"xfce4-screenshooter -s ~/pics/screenshots -r"
+    XF86AudioMicMute
+"recordmydesktop"
+    Shift + XF86AudioMicMute
+
+# fn + f6 (snapshot/headset) is not visible through xev
+
+"pamixer -d 5 --allow-boost"
+    XF86Launch7
+"pamixer -d 5 --allow-boost"
+    XF86AudioLowerVolume
+
+"pamixer -i 5 --allow-boost"
+    XF86Launch8
+"pamixer -i 5 --allow-boost"
+    XF86AudioRaiseVolume
+
+"pamixer -t"
+    XF86Launch9
+"pamixer -t"
+    XF86AudioMute
+
+# F24, F20-21 are free

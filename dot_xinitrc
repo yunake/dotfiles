@@ -1,0 +1,110 @@
+# required for xdg-open to work with magnet links
+export DE=xfce
+
+# so that at apps use gtk themes correctly
+export GTK2_RC_FILES="$HOME/.gtkrc-2.0"
+
+# pidgin needs this to connect to Lync
+export NSS_SSL_CBC_RANDOM_IV=0
+
+# fix ugly huge cursors
+#export XCURSOR_PATH=""
+#gsettings set org.gnome.desktop.interface cursor-theme theme-name
+#gsettings set org.gnome.desktop.interface cursor-size 24
+#also, xresources
+
+# start some nice programs
+if [ -d /etc/X11/xinit/xinitrc.d ]; then
+  for f in /etc/X11/xinit/xinitrc.d/*; do
+    [ -x "$f" ] && . "$f"
+  done
+  unset f
+fi
+
+# setup essential peripherials
+#setup_keyboard
+#setup_touchpad
+#setup_mouse
+#setup_bt
+
+# Xmodmap
+for map in /etc/X11/xinit/.Xmodmap $HOME/.Xmodmap; do
+  if [ -f $map ]; then
+    xmodmap $map
+  fi
+  unset map
+done
+
+# Xresources
+for res in /etc/X11/xinit/.Xresources $HOME/.Xresources; do
+  if [ -f $res ]; then
+    xrdb -merge $res
+  fi
+  unset res
+done
+
+# extra fonts
+xset +fp /usr/share/fonts/local
+xset fp rehash
+
+xsetroot -solid grey &
+# xinerama
+#xrandrx auto
+
+export SSH_ASKPASS=lxqt-openssh-askpass
+eval $(ssh-agent)
+#ssh-add </dev/null &
+#for f in .ssh/id_rsa $(ls .ssh/aws)
+#do
+#  ssh-add "$f" # & #??
+#  use ssh-add -c if using agent forwarding
+#done
+# + keepassx2
+# + pgp-agent
+eval $(gpg-agent --daemon)
+
+next-wallpaper & # from xrandrx
+#gnome-settings-daemon &
+#pulseaudio --start &
+#compton -b &
+tint2 & # from xrandrx
+#stalonetray --dockapp-mode simple &
+tilda &
+#fbxkb & #1 # now done from setup_keyboard
+(cd /home/yunake/src/pnmixer/clip-volume/pnmixer-clip-volume/build && ./src/pnmixer) &
+#pnmixer &
+#volumeicon &
+#pasystray &
+#radiotray &
+#xscreensaver & #1
+#xscreensaver-reset-kbd-us.pl &
+#blueman-applet &
+#xfce4-power-manager &
+#pytyle3
+#whaw -d
+#alarm-clock-applet &
+xbindkeys &
+#fluxgui &
+#xflux -l 49.8198670 -g 24.0177680 &
+#redshift &
+#hamster &
+#rescuetime &
+# flag the need to start up ipager
+touch /tmp/ipager-up
+stardict -h &
+dropbox &
+#yandex-disk start &
+#hubic &
+unclutter -noevents -root & # causes X to go mentle
+#vlock -a # not neaded since xorg 1.16 starts on the login vt
+#vlock-cmatrixreloaded -sn
+xset s off -dpms &
+pulse-autoselect-output &
+#ucontrol &
+
+exec dbus-launch openbox-session
+
+# openbox & PIDOFAPP=$!
+# someothercommand
+# wait $PIDOFAPP
+# cleanup
