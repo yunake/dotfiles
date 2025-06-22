@@ -1,0 +1,43 @@
+[ui]
+username = Eugene Yunak <eugene@yunak.eu>
+interface = curses
+
+[extensions]
+color =
+pager =
+rebase =
+strip =
+record =
+convert =
+fetch =
+mq =
+#commits = ~yunake/pythonlibs/hg_commits.py
+hgext.extdiff =
+shelve =
+
+[experimental]
+crecord=True
+
+[diff]
+git = True
+showfunc = True
+
+[pager]
+pager = LESS='FSRX' less
+
+[alias]
+mine = resolve -t internal:local
+theirs = resolve -t internal:other
+show = log -pr
+myhistedit = histedit 'only(.,master)'
+diffu = diff
+gitdiff = diff
+diffnr = icdiffnr
+crecord = commit -i
+
+[extdiff]
+cmd.icdiff =
+opts.icdiff = --recursive
+cmd.icdiffnr = icdiff
+opts.icdiffnr = --line-numbers --recursive
+cmd.vimdiff =
