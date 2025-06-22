@@ -1,0 +1,8 @@
+#!/bin/sh
+
+# TODO: output utf8 character before the actual percentage to indicate if we are charging or discharging
+
+acpi | awk -F, '{print $2 $3}' | paste -d '' - - | sed 's|remaining|left|'
+
+#acpi | awk -F, '{print $2 $3}' | awk -F: '{OFS=":"; print $1,$2 }' | sed 's|$| left|' | paste -d '' - -
+

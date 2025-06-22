@@ -1,0 +1,12 @@
+#!/bin/bash
+
+declare -A timezones
+
+timezones=( ["Menlo Park"]="US/Pacific" ["Dublin"]="Europe/Dublin" ["Львів"]="Europe/Kiev" ["Warszawa"]="Europe/Warsaw" )
+
+for city in "${!timezones[@]}"
+do
+  tztime=$(TZ="${timezones[$city]}" date +%R "$@")
+  echo "$city $tztime"
+done | sort -k 2 -n | paste - - - -
+

@@ -1,0 +1,8 @@
+#!/bin/sh
+
+case $(xset -q | awk '/LED/ { print $10 }') in
+  00000000) echo EN  ;;
+  00001004) echo UA  ;;
+  *)        echo TBD ;;
+esac
+
