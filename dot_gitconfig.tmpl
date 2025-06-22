@@ -19,6 +19,7 @@
 [pull]
     # avoid accidentally creating a merge commit when you run git pull on a branch where the upstream branch has diverged
     rebase = true
+    ff = only
 
 [fetch]
     prune = true
@@ -43,6 +44,7 @@
     ci = "commit"
     amend = "commit --amend --no-edit"
     reb = "!r() { git rebase -i HEAD~${1:-2}; }; r"
+    diff-head = diff @~..@
     sync = "!git pull origin $(git mainbranch) --rebase" # Rebase on remote main
     fullgc = "gc --aggressive --prune=1day"
     filelog = "log -u" # All the commits related to a file
@@ -53,7 +55,9 @@
     l = "log --oneline --graph --decorate"
     lg = "log -p"
     ls = "log --color --pretty=oneline -n 20 --graph --abbrev-commit"
+    lv = log --color --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
     ll = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --numstat -n 10
+    lc = "!f() { git log --oneline "${1}..HEAD"; }; f"
     lnc = log --pretty=format:"%h\\ %s\\ [%cn]" # No colors.  Good for pipes
     graph = "!sh -c 'git log --graph --decorate --oneline -n "$1"' -"
     # list branches ordered by change time
