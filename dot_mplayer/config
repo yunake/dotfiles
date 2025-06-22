@@ -1,0 +1,4 @@
+ao=pulse
+vo=vaapi
+heartbeat-cmd="xscreensaver-command -deactivate"
+stop-xscreensaver=true

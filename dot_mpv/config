@@ -1,0 +1,114 @@
+#slang=en,eng,ru,rus
+#alang=ja,jpn,jp,en,eng
+
+slang=en,eng,ua,ukr
+alang=ja,jpn,jp,en,eng,ua,ukr
+
+ao=pulse
+vo=gpu
+gpu-api=vulkan
+hwdec=auto-copy
+
+#vo=vaapi
+#vo=drm
+#vo=xv # may be faster if trying to output to 4k display on Intel according to archwiki
+#opengl-waitvsync # nope does not work
+profile=gpu-hq # good and modern but slow on huge files
+#profile=gpu-hq # good and modern but slow on huge files
+### hwdec=vaapi # disabled to use video filters (OR try enabling hwdec but
+#disabling vo, or setting it to default opengl)
+#vo=opengl
+#profile=xv
+
+# comment out when not enough resources
+#profile=gpu-hq
+#deband=yes # gpu-intensive, but fine on intel with default 1 iteration
+# comment out when not enough resources (done)
+
+# https://iamscum.wordpress.com/guides/videoplayback-guide/mpv-conf/
+#gpu-api=vulkan #framedrops, needed for ravu shader
+#gpu-api=opengl #force it to be sure?
+#deinterlace=auto # turn on manually with 'd'
+#dither-depth=auto # dithering is usually not needed, enable with 'g'
+#denoize? via libav filters? (cycle with 'n')
+#sharpen=-10 # blur, positive values sharpen. scale=ewa_lanczossharp sharpens enough too
+#opengl-pbo=yes # speedup for huge files?
+# opengl-waitvsync=yes # may help vsync, may not
+
+#deband-iterations=4
+#deband-threshold=48
+#deband-range=16 # decrease for iterations > 1
+#deband-grain=48 # adds grain
+
+#interpolation=yes # enable tscale. what happens on 24fps/50hz?
+#tscale=oversample
+#scale=ewa_lanczossharp
+#dscale=ewa_lanczossharp # poor little intel can't handle this on 4k. actually, not even on fullhd
+#cscale=ewa_lanczossoft
+
+#glsl-shader="~~/shaders/nnedi3-nns32-win8x4.hook"
+#scale=ewa_lanczos
+#dscale=ewa_lanczossharp
+#cscale=ewa_lanczossoft
+#fbo-format=rgba16f # maybe? man says it's broken on intel
+
+#scale-antiring=0.7
+#dscale-antiring=0.7
+#cscale-antiring=0.7
+
+#tscale=box
+#tscale-window=sphinx
+#tscale-radius=1.0
+#tscale-clamp=0.0
+
+
+#profile=xv
+#hwdec=vaapi
+#hwdec-codecs=all
+#gpu-context=x11egl
+#x11-bypass-compositor=no
+
+# vd-lavc-fast
+# vd-lavc-skiploopfilter=<skipvalue>
+# vd-lavc-skipframe=<skipvalue>
+# vd-lavc-framedrop=<skipvalue>
+# vd-lavc-threads=<threads>
+
+#geometry=90%+40%+2%
+#heartbeat-cmd="gnome-screensaver-command -p"
+#heartbeat-cmd="xscreensaver-command -deactivate"
+stop-screensaver=yes
+demuxer-mkv-subtitle-preroll=yes
+sub-ass-vsfilter-blur-compat=yes
+#sub-fix-timing=yes
+sub-auto=fuzzy
+sub-file-paths=ass:srt:sub:subs:subtitles
+embeddedfonts=yes
+audio-file-auto=fuzzy # or auto
+audio-pitch-correction=yes
+volume-max=200
+sub-pos=98
+#sub-scale=1.1
+#sub-text-font-size=55
+sub-font-size=45
+sub-ass-force-style=Outline=5,Kerning=yes
+# # Make the subtitle font size relative to the window, instead of the video
+# sub-scale-with-window=yes
+#
+# # Whether to scale subtitles with the window size (default: yes).
+# # If this is disabled, changing the window size won't change the subtitle font size.
+# sub-scale-by-window=no
+
+network-timeout=10
+#cache-initial=8096
+log-file=/tmp/mpv.log
+#demuxer-mkv-fix-timestamps
+
+# blips the tv? fucks up output causing horrible stuttering frames
+#video-sync=display-resample
+#script-opts=autospeed-xrandr=true,autospeed-speed=false,autospeed-display=auto,autospeed-exitmode=auto,autospeed-interlaced=false,autospeed-spause=1
+#script-opts=autospeed-xrandr=false,autospeed-speed=true,autospeed-display=auto,autospeed-exitmode=auto,autospeed-interlaced=true,autospeed-spause=1
+
+#[HorribleSubs]
+#profile-desc=cond:string.match(p.filename, "HorribleSubs")~=nil
+#deband=yes
