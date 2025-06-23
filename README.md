@@ -45,7 +45,6 @@ git push
 - Darwin: add terminal colors configs
 - Darwin: audit and add other configs
 - WSL: vim fix copy-paste to system clipboard
-- WSL: tmux hotkeys: v to enter vim mode, v to select, y to copy
 - WSL: tmux copy-paste to system clipboard works in Windows Terminal but not in Alacritty
 - WSL: alacritty add config to chezmoi
 - WSL: alacritty & Windows Terminal fix colors. visual selection in vim
@@ -66,6 +65,7 @@ git push
 - nvim for markdown https://youtu.be/TrbZlA4UIFU
 - yazi file manager
 - tmux status line time & kb layout, battery on wsl
+- tmux copy-paste using Terminal escape sequences over ssh
 - Keyboard: design layout [./keyboard]
 - Keyboard: kanata config for laptop keyboard, autodetect external keyboard
 - Git commit signing, requires gpg keys https://github.com/codingjerk/dotfiles?tab=readme-ov-file#optional-extra-steps-on-new-hosts

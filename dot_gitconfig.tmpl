@@ -21,6 +21,13 @@
     rebase = true
     ff = only
 
+[push]
+    default = current
+    followTags = true
+
+[rebase]
+    missingCommitsCheck = warn
+
 [fetch]
     prune = true
     pruneTags = true
@@ -37,9 +44,10 @@
 
 [alias]
     aliases = "!git config -l | grep alias | cut -c 7- | bat -pl INI"
+    work-email = "!git config user.name 'Yevhen Yunak' && git config user.email y.yunak@ua"
     # Switch to a branch, creating it if necessary.
     go = "!f() { git checkout -b \"$1\" 2> /dev/null || git checkout \"$1\"; }; f"
-    st = "status --short --branch"
+    st = "status --short --branch --show-stash"
     co = "checkout"
     ci = "commit"
     amend = "commit --amend --no-edit"
@@ -52,9 +60,9 @@
     uncommit = "reset --soft HEAD~1"
     unstage = "reset HEAD --"
     unadd = "reset HEAD --"
-    l = "log --oneline --graph --decorate"
+    l = "log --oneline --graph --decorate -n 10"
     lg = "log -p"
-    ls = "log --color --pretty=oneline -n 20 --graph --abbrev-commit"
+    ls = "log --color --pretty=oneline --graph --abbrev-commit -n 20"
     lv = log --color --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
     ll = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --numstat -n 10
     lc = "!f() { git log --oneline "${1}..HEAD"; }; f"
