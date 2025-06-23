@@ -5,6 +5,11 @@ Host *
     TCPKeepAlive yes
     ServerAliveInterval 30
     ServerAliveCountMax 6
+    ConnectTimeout 5
+    ConnectionAttempts 2
+    Compression yes
+    IPQoS lowdelay
+    StrictHostKeyChecking accept-new
     # for OLD or non OpenSSH hosts, e.g. Dropbear
     #PubkeyAcceptedAlgorithms +ssh-rsa
     #HostkeyAlgorithms +ssh-rsa
