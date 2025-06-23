@@ -68,3 +68,4 @@ git push
 - tmux status line time & kb layout, battery on wsl
 - Keyboard: design layout [./keyboard]
 - Keyboard: kanata config for laptop keyboard, autodetect external keyboard
+- Git commit signing, requires gpg keys https://github.com/codingjerk/dotfiles?tab=readme-ov-file#optional-extra-steps-on-new-hosts
