@@ -11,6 +11,8 @@ alias kg='kubectl neat get --'
 alias kl='stern'
 alias dfh='duf -hide special'
 
+if command -v hwatch >/dev/null 2>&1; then
+    alias watch='hwatch -c -d word --no-help-banner --no-title -n 1'; fi
 if command -v bpytop >/dev/null 2>&1; then
     alias htop='bpytop'; fi
 
