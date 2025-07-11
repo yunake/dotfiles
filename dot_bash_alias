@@ -10,6 +10,7 @@ alias docker-top='ctop'
 alias kg='kubectl neat get --'
 alias kl='stern'
 alias dfh='duf -hide special'
+alias hl='rg --passthru --color=always'
 
 if command -v procs >/dev/null 2>&1; then
     alias psw='procs'
