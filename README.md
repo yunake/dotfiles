@@ -8,7 +8,7 @@ sh -c "$(curl -fsLS get.chezmoi.io)" -- init --apply yunake
 
 On Ubuntu
 ```shell
-sudo apt install -y bpytop tmux ripgrep exuberant-ctags fzf bat bat-extra rage jq yq curlie httpie sd fd procs dust duf bandwidth doggo yazi devbox just mods
+sudo apt install -y bpytop tmux ripgrep exuberant-ctags fzf bat bat-extra rage jq yq curlie httpie sd fd procs dust duf bandwidth doggo yazi devbox just mods zoxide xh hwatch eza broot yazi choose
 dpkg -i https://github.com/dandavison/delta/releases/download/0.18.2/git-delta_0.18.2_amd64.deb
 dpkg -i https://github.com/ms-jpq/sad/releases/latest/download/x86_64-unknown-linux-gnu.deb
 ```
@@ -44,6 +44,7 @@ git push
 - For `chezmoi-pull`, add prompt to apply the changes
 - Darwin: add terminal colors configs
 - Darwin: audit and add other configs
+- Darwin: in vim, visual selection color is solid, likely due to lack of true colors? 
 - WSL: vim fix copy-paste to system clipboard
 - WSL: tmux copy-paste to system clipboard works in Windows Terminal but not in Alacritty
 - WSL: alacritty add config to chezmoi
