@@ -11,10 +11,31 @@ alias kg='kubectl neat get --'
 alias kl='stern'
 alias dfh='duf -hide special'
 
+if command -v procs >/dev/null 2>&1; then
+    alias psw='procs'
+else
+    alias psw='ps auxww'
+fi
+function pswg {
+    psw | G $1 | grep -v grep
+}
+
 if command -v hwatch >/dev/null 2>&1; then
     alias watch='hwatch -c -d word --no-help-banner --no-title -n 1'; fi
+if command -v doggo >/dev/null 2>&1; then
+    alias dig='doggo'; fi
 if command -v bpytop >/dev/null 2>&1; then
     alias htop='bpytop'; fi
+    # gtop glances bottom (btm)
+if command -v xh >/dev/null 2>&1; then
+    alias http='xh'
+elif command -v httpie >/dev/null 2>&1; then
+    alias http='httpie'
+elif command -v curlie >/dev/null 2>&1; then
+    alias http='curlie'
+else
+    alias http='curl'
+fi
 
 # chezmoi
 alias chezmoi-pull='chezmoi git pull -- --autostash --rebase && chezmoi diff' # TODO: add prompt to autoapply
