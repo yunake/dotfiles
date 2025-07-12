@@ -12,22 +12,31 @@ alias kl='stern'
 alias dfh='duf -hide special'
 alias hl='rg --passthru --color=always'
 
-if command -v procs >/dev/null 2>&1; then
-    alias psw='procs'
-else
-    alias psw='ps auxww'
-fi
-function pswg {
-    psw | G $1 | grep -v grep
-}
-
 if command -v hwatch >/dev/null 2>&1; then
     alias watch='hwatch -c -d word --no-help-banner --no-title -n 1'; fi
 if command -v doggo >/dev/null 2>&1; then
     alias dig='doggo'; fi
-if command -v bpytop >/dev/null 2>&1; then
-    alias htop='bpytop'; fi
-    # gtop glances bottom (btm)
+
+if command -v procs >/dev/null 2>&1; then
+    alias psw='procs'
+    alias pswg='procs'
+else
+    alias psw='ps auxww'
+    function pswg {
+        ps auxww | G $1 | grep -v grep
+    }
+fi
+
+if command -v gtop >/dev/null 2>&1; then
+    alias htop='gtop'
+elif command -v btm >/dev/null 2>&1; then
+    alias htop='btm'
+elif command -v bpytop >/dev/null 2>&1; then
+    alias htop='bpytop'
+elif command -v glances >/dev/null 2>&1; then
+    alias htop='glances'
+fi
+
 if command -v xh >/dev/null 2>&1; then
     alias http='xh'
 elif command -v httpie >/dev/null 2>&1; then
