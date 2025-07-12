@@ -37,6 +37,7 @@ if ! shopt -oq posix; then
   fi
 fi
 
+[ -f ~/.bash_colors ] && source ~/.bash_colors
 [ -f ~/.bash_tokens ] && source ~/.bash_tokens
 [ -f ~/.bash_alias  ] && source ~/.bash_alias
 [ -f ~/.bash_linux  ] && source ~/.bash_linux
