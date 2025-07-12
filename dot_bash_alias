@@ -6,6 +6,8 @@ alias G='grep --color=always -i'
 alias ls='ls --color=auto'
 alias lls='ls -lAGh1vX --group-directories-first --color=always | L'
 alias lastCommand='history 2 | head -1 | awk \!\(\$1\=\"\"\)'
+backup() { cp -a "${1}" "${1}_$(date +%Y%m%d_%H%M%S)"; }
+
 alias docker-top='ctop'
 alias docker-prune='docker image prune -a -f && docker volume prune -f && docker system prune -a -f'
 alias docker-clean-images='docker images -q -f dangling=true | xargs docker rmi'
@@ -20,10 +22,11 @@ alias kl='stern'
 alias dfh='duf -hide special'
 alias hl='rg --passthru --color=always'
 
-function _command_exists() {
-    #type -t "${1?}" > /dev/null
-    command -v "${1?}" > /dev/null 2>&1
-}
+if _command_exists zoxide; then
+    eval "$(zoxide init --cmd j bash)"
+else
+    alias j=cd
+fi
 
 if _command_exists hwatch; then
     alias watch='hwatch -c -d word --no-help-banner --no-title -n 1'; fi
@@ -72,6 +75,25 @@ function chezmoi-new-ubuntu-broken-escaping {
 # TODO: modify it so it opens PDFs, or white custom script like ~/bin/rfv
 # better yet, `mv rfv search` and make it open most files in vim, pdf via `open`, or patch rga-fzf / ripgrep-all
 alias search_pdf='rga-fzf'
+
+function ips() {
+	if _command_exists ifconfig; then
+		ifconfig | awk '/inet /{ gsub(/addr:/, ""); print $2 }'
+	elif _command_exists ip; then
+		ip addr | grep -oP 'inet \K[\d.]+'
+	fi
+}
+
+function myip() {
+	list=("http://myip.dnsomatic.com/" "http://checkip.dyndns.com/" "http://checkip.dyndns.org/")
+	for url in "${list[@]}"; do
+		if res="$(curl -fs "${url}")"; then
+			break
+		fi
+	done
+	res="$(echo "$res" | grep -Eo '[0-9\.]+')"
+	echo -e "Your public IP is: ${echo_bold_green-} $res ${echo_normal-}"
+}
 
 # open files in directory in vim. `:qa` to quit
 function vimd {

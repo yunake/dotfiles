@@ -60,6 +60,8 @@ git push
 - Tools: structured installs across various platforms
 - Tools: add more tools: jq, yq, mlr, fd, direnv
 - Tools: ssh compatible crossplatform notify (`.bash_darwin` -> `notifyDone`, `.bash_linux` -> `alert`)
+- Tools: integrate notify https://github.com/Bash-it/bash-it/blob/master/plugins/available/cmd-returned-notify.plugin.bash
+- Bash: notify on long-running jobs, determine via https://github.com/rcaloras/bash-preexec
 - Browsers: one config for vim keys configs in Zen, Safari, Edge
 - Security: implement encrypted tokens and certificates
 - Fonts: nerd fonts, unify mono fonts across systems

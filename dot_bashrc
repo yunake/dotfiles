@@ -37,6 +37,11 @@ if ! shopt -oq posix; then
   fi
 fi
 
+function _command_exists() {
+    #type -t "${1?}" > /dev/null
+    command -v "${1?}" > /dev/null 2>&1
+}
+
 [ -f ~/.bash_colors ] && source ~/.bash_colors
 [ -f ~/.bash_tokens ] && source ~/.bash_tokens
 [ -f ~/.bash_alias  ] && source ~/.bash_alias
