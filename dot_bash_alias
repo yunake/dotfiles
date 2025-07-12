@@ -7,41 +7,52 @@ alias ls='ls --color=auto'
 alias lls='ls -lAGh1vX --group-directories-first --color=always | L'
 alias lastCommand='history 2 | head -1 | awk \!\(\$1\=\"\"\)'
 alias docker-top='ctop'
+alias docker-prune='docker image prune -a -f && docker volume prune -f && docker system prune -a -f'
+alias docker-clean-images='docker images -q -f dangling=true | xargs docker rmi'
+alias docker-clean-containers='docker rm $(docker ps -a -q)'
+alias docker-run='docker run --rm -it'
+alias docker-logs='docker-compose logs -f --tail 100'
+docker-netshoot() { docker run -it --net container:$1 nicolaka/netshoot; }
+docker-shell() { docker exec -it $1 /bin/bash -l -O vi; }
 alias kg='kubectl neat get --'
+kubectl-netshoot() { kubectl debug $1 -it --image=nicolaka/netshoot; }
 alias kl='stern'
 alias dfh='duf -hide special'
 alias hl='rg --passthru --color=always'
 
-if command -v hwatch >/dev/null 2>&1; then
+function _command_exists() {
+    #type -t "${1?}" > /dev/null
+    command -v "${1?}" > /dev/null 2>&1
+}
+
+if _command_exists hwatch; then
     alias watch='hwatch -c -d word --no-help-banner --no-title -n 1'; fi
-if command -v doggo >/dev/null 2>&1; then
+if _command_exists doggo; then
     alias dig='doggo'; fi
 
-if command -v procs >/dev/null 2>&1; then
+if _command_exists procs; then
     alias psw='procs'
     alias pswg='procs'
 else
     alias psw='ps auxww'
-    function pswg {
-        ps auxww | G $1 | grep -v grep
-    }
+    pswg() { ps auxww | G $1 | grep -v grep; }
 fi
 
-if command -v gtop >/dev/null 2>&1; then
+if _command_exists gtop; then
     alias htop='gtop'
-elif command -v btm >/dev/null 2>&1; then
+elif _command_exists btm; then
     alias htop='btm'
-elif command -v bpytop >/dev/null 2>&1; then
+elif _command_exists bpytop; then
     alias htop='bpytop'
-elif command -v glances >/dev/null 2>&1; then
+elif _command_exists glances; then
     alias htop='glances'
 fi
 
-if command -v xh >/dev/null 2>&1; then
+if _command_exists xh; then
     alias http='xh'
-elif command -v httpie >/dev/null 2>&1; then
+elif _command_exists httpie; then
     alias http='httpie'
-elif command -v curlie >/dev/null 2>&1; then
+elif _command_exists curlie; then
     alias http='curlie'
 else
     alias http='curl'
