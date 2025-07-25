@@ -21,6 +21,7 @@ test -r ~/.dir_colors && eval $(gdircolors ~/.dir_colors)
 alias ls='/opt/homebrew/bin/gls --color=auto'
 alias lls='/opt/homebrew/bin/gls -lAGh1vX --group-directories-first --color=always | L'
 alias xclip='pbcopy'
+alias timeout='gtimeout'
 alias xdg-open='open'
 alias htop_mac='macmon'
 alias powertop='sudo powermetrics --samplers=tasks --order=composite --show-process-energy --show-usage-summary --show-initial-usage ' # see also: `power_report.sh` and what it calls
@@ -28,7 +29,7 @@ alias powertop='sudo powermetrics --samplers=tasks --order=composite --show-proc
 alias xcode='open -a "/Applications/XCode.app"'
 alias finder='open -a Finder .'
 alias ql='qlmanage -p 2>/dev/null' # Finder's Quick Look
-alias dsclean='find . -type f -name .DS_Store -delete'
+alias rm_macos_crap='find . -type f -name .DS_Store -delete'
 alias lmk='say -v Zarvox "Process complete."' # curl http://downloads.com/hugefile.zip; lmk
 alias mute='osascript -e "set volume output muted true"'
 alias unmute='osascript -e "set volume output muted false"'
